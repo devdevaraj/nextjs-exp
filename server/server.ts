@@ -10,7 +10,10 @@ const port = 3000;
     try {
         await app.prepare();
         const server = express();
-        server.all("*", (req: Request, res: Response) => {
+        server.get("/api",(req: Request, res: Response) => {
+            return res.json("Hellow this is awsome");
+        })
+        server.all("/*", (req: Request, res: Response) => {
             return handle(req,res);
         });
         server.listen(port, (err?: any) => {
