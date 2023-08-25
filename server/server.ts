@@ -11,7 +11,14 @@ const port = 3000;
         await app.prepare();
         const server = express();
         server.get("/api",(req: Request, res: Response) => {
-            return res.json("Hellow this is awsome");
+            return res.status(200).send([
+                {
+                    todo: "Todo 1"
+                },
+                {
+                    todo: "Todo 2"
+                }
+            ]);
         })
         server.all("/*", (req: Request, res: Response) => {
             return handle(req,res);
