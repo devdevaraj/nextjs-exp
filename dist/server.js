@@ -9,12 +9,30 @@ const dev = process.env.NODE_ENV !== "production";
 const app = (0, next_1.default)({ dev });
 const handle = app.getRequestHandler();
 const port = 3000;
+const Todos = [
+    {
+        todo: "Todo 1"
+    },
+    {
+        todo: "Todo 2"
+    }
+];
 (async () => {
     try {
         await app.prepare();
         const server = (0, express_1.default)();
-        server.get("/api", (req, res) => {
-            return res.json("ok");
+        server.use(express_1.default.json());
+        server.use(express_1.default.urlencoded({
+            extended: true
+        }));
+        server.get("/api/get-todo", (req, res) => {
+            return res.status(200).send(Todos);
+        });
+        server.post("/api/set-todo", (req, res) => {
+            const todo = req.body;
+            console.log(todo);
+            Todos.push(todo);
+            return res.status(200).send({ msg: "todo set successfully!!!" });
         });
         server.all("/*", (req, res) => {
             return handle(req, res);
