@@ -1,3 +1,4 @@
+//import { PrismaClient } from '@prisma/client';
 import express, { Request, Response } from "express";
 import next from "next";
 
@@ -5,6 +6,8 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const port:number = 3000;
+
+//const prisma = new PrismaClient();
 
 type todoType = {
     todo: string
@@ -46,5 +49,8 @@ const Todos:todoType[] = [
     } catch (error) {
         console.error(error);
         process.exit(1);   
-    }
+    } finally {(async () => {
+      console.log("Prisma disconnect");
+    //await prisma.$disconnect();
+  })()}
 })();
