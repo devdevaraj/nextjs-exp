@@ -23,12 +23,15 @@
     "express": "^4.18.2",
     "next": "13.4.19",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.5.6",
     "autoprefixer": "^10.4.15",
+    "bufferutil": "^4.0.7",
     "nodemon": "^3.0.1",
     "postcss": "^8.4.28",
     "prisma": "^5.2.0",
@@ -36,6 +39,7 @@
     "scss": "^0.2.4",
     "tailwindcss": "^3.3.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "utf-8-validate": "^5.0.10"
   }
 }
